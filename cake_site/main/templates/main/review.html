@@ -1,0 +1,18 @@
+{% extends 'main/admin_main.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    {% if feedbacks %}
+        {% for el in feedbacks %}
+            <div class = "alert alert-warning mt-2">
+                <h3>{{ el.name_u }}</h3>
+                <p>{{ el.review_u }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Еще нет отзывов :(</p>
+    {% endif %}
+{% endblock %}

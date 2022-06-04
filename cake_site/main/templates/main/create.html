@@ -1,0 +1,17 @@
+{% extends 'main/admin_main.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Create:</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.name}}<br>
+        {{ form.anons}}<br>
+        {{ form.price}}<br>
+        <button type="submit" class="btn bin-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

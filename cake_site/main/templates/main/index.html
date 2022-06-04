@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    {% if cakes %}
+        {% for el in cakes %}
+            <div class = "alert alert-warning mt-2">
+                <h3>{{ el.name }}</h3>
+                <p>{{ el.anons }}</p>
+                <h3>Цена: {{ el.price }} рублей</h3>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Еще нет работ :(</p>
+    {% endif %}
+{% endblock %}
