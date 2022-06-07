@@ -5,6 +5,7 @@
 
 
 Вход
+
 <img width="902" alt="image" src="https://user-images.githubusercontent.com/79199794/172348337-8e3448ce-15e3-42b7-9247-12524b1b77d9.png">
 
 
@@ -31,7 +32,8 @@
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/79199794/172349184-1809eee1-f5ed-4364-af29-07a791a55dcc.png">
 
 
-О себе
+О нас
+
 <img width="952" alt="image" src="https://user-images.githubusercontent.com/79199794/172349378-e04c4594-e92b-45cc-a9eb-2d7bb24af106.png">
 
 
