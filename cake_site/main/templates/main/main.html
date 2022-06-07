@@ -15,18 +15,17 @@
         </a>
       <h5 class="my-0 mr-md-auto front-weight-normal">3sisters_cakes</h5>
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-          <a class="p-2 text-dark " href="{% url 'admin_main' %}">Главная</a>
-          <a class="p-2 text-dark " href="{% url 'create' %}">Добавить</a>
+          <a class="p-2 text-dark " href="{% url 'login' %}">Войти</a>
+          <a class="p-2 text-dark " href="{% url 'registration' %}">Зарегестрироваться</a>
       </nav>
     </div>
     {% block content %}
-           {% if cakes.count > 0 %}
+           {% if cakes %}
         {% for el in cakes %}
             <div class = "alert alert-warning mt-2">
                 <h3>{{ el.name }}</h3>
                 <p>{{ el.anons }}</p>
                 <h3>Цена: {{ el.price }} рублей</h3>
-                <td><a href="edit/{{cake.id}}">Изменить</a> | <a href="delete/{{cake.id}}">Удалить</a></td>
             </div>
         {% endfor %}
     {% else %}

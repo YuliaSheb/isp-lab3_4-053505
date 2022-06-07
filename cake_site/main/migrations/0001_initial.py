@@ -18,7 +18,6 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=50, verbose_name='Название')),
                 ('anons', models.TextField(verbose_name='Описание')),
                 ('price', models.PositiveSmallIntegerField(verbose_name='Цена')),
-                #('image', models.ImageField(upload_to='images/', verbose_name='Фото')),
             ],
         ),
     ]

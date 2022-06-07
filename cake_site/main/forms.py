@@ -1,6 +1,7 @@
-from .models import Cake
-from .models import Feedback
-from django.forms import ModelForm,TextInput,Textarea
+from .models import *
+from django.forms import ModelForm, TextInput, Textarea
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class CakeForm(ModelForm):
@@ -37,3 +38,9 @@ class FeedbackForm(ModelForm):
             'placeholder': 'Отзыв'
         }),
     }
+
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']

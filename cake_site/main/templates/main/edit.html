@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите название</label><br>
+            <input type="text" name="name" value="{{cake.name}}" />
+        </p>
+        <p>
+            <label>Введите описание</label><br>
+            <input type="text" name="anons" value="{{cake.anons}}" />
+        </p>
+        <p>
+            <label>Введите цену</label><br>
+            <input type="number" name="price" value="{{cake.price}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>
