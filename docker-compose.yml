@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.9"
 
 services:
   db:
@@ -11,13 +11,14 @@ services:
       - POSTGRES_PASSWORD=ntktw2002
   web:
     build: .
-    command: bash -c "
-      sleep 5 &&
-      python cake_site/manage.py migrate &&
-      python cake_site/manage.py runserver 0.0.0.0:8000"
-
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
     ports:
       - "8000:8000"
+    environment:
+      - POSTGRES_NAME=cake_site
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ntktw2002
     depends_on:
       - db
-    restart: always
