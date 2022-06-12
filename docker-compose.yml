@@ -6,7 +6,7 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=cake_site
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=ntktw2002
   web:
