@@ -8,11 +8,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from .forms import CreateUserForm
 from django.contrib import messages
-
+import logging
+import asyncio
+from asgiref.sync import sync_to_async
 from django.contrib.auth import authenticate, login, logout
 
 
 def index(request):
+    logging.info('Welcome')
     cakes = Cake.objects.all()
     return render(request, 'main/index.html', {'title': 'Главная страница', 'cakes': cakes})
 
@@ -44,7 +47,7 @@ def edit(request, id):
 
 # удаление данных из бд
 def delete(request, id):
-        cake = Cake.objects.get(id=id)
+        cake = asyncio.run(async_delete())
         if request.method == 'POST':
             cake.delete()
             return redirect('admin_main')
@@ -54,7 +57,10 @@ def delete(request, id):
         }
         return render(request, 'main/admin_main.html', context)
 
-
+@sync_to_async
+def async_delete(id):
+    cake = Cake.objects.get(id=id)
+    return cake
 
 def about(request):
     return render(request, 'main/about.html')
@@ -80,9 +86,13 @@ def create(request):
     return render(request, 'main/create.html', context)
 
 def review(request):
-    feedbacks = Feedback.objects.all()
+    feedbacks = asyncio.run(review_obj())
     return render(request, 'main/review.html', {'title': 'Отзывы', 'feedbacks': feedbacks})
 
+@sync_to_async
+def review_obj():
+    feedbacks = Feedback.objects.all()
+    return feedbacks
 
 def create_review(request):
     if request.method == 'POST':
@@ -125,7 +135,7 @@ def loginP(request):
 
         if user is not None:
             login(request,user)
-            redirect('home')
+            return redirect('home')
         else:
             messages.info(request,"Username or password is incorrect")
 
